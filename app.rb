@@ -27,4 +27,9 @@ class Battle < Sinatra::Base
     erb(:attack)
   end
 
+  get "/end_game" do
+    $game.winner
+    erb(:end_game)
+  end
+
 end

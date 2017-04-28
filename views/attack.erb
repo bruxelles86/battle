@@ -1,4 +1,9 @@
-<h1>'Attacked!'</h1>
-<form method = "get" action = "/play"> <button type="submit" value="submit">next turn</button> </form>
+<h1><%=$game.this_turn.name == $game.player1.name ? $game.player2.name : $game.player1.name %> attacked <%= $game.this_turn.name %></h1>
 
-<%$game.attack(:player2)%>
+<%$game.attack%>
+
+<% if $game.player1.hp > 0 && $game.player2.hp > 0 %>
+<form method = "get" action = "/play"> <button type="submit" value="submit">next turn</button> </form>
+<%else%>
+<form method = "get" action = "/end_game"> <button type="submit" value="submit">End game</button> </form>
+<%end%>

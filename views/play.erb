@@ -1,5 +1,9 @@
 <h1><%=$game.player1.name %>  VS <%= $game.player2.name %></h1>
+<h3><%= $game.player1.name %> hp:<%=$game.player1.hp%>/100</h3>
 <h3><%= $game.player2.name %> hp:<%=$game.player2.hp%>/100</h3>
+
+<h1><%=$game.this_turn.name == $game.player1.name ? $game.player2.name : $game.player1.name %>'s turn!</h1>
+
 <form action="/attack" method="post">
   <button type="submit" value="submit">Attack</button>
 </form>
