@@ -4,9 +4,8 @@ require_relative './lib/game.rb'
 
 class Battle < Sinatra::Base
 
-  configure do
-    enable :sessions
-    set :session_secret, "My session secret"
+  before do
+    @game = Game.instance
   end
 
   get "/" do
@@ -14,8 +13,7 @@ class Battle < Sinatra::Base
   end
 
   post "/names" do
-    $game = Game.new(params[:player_1], params[:player_2])
-
+    @game = Game.create(params[:player_1], params[:player_2])
     redirect '/play'
   end
 
@@ -28,7 +26,6 @@ class Battle < Sinatra::Base
   end
 
   get "/end_game" do
-    $game.winner
     erb(:end_game)
   end
 

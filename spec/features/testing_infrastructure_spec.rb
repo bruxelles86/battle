@@ -42,7 +42,7 @@ end
 feature "should end the game" do
   scenario "when a player reaches 0 life" do
     sign_in_and_play
-    $game.player1.hp = 10
+    15.times { attack }
     click_button('Attack')
     save_and_open_page
     click_button('End game')

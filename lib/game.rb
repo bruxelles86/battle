@@ -11,6 +11,14 @@ attr_reader :this_turn
       @this_turn = @player1
   end
 
+  def self.instance
+    @game_instance
+  end
+
+  def self.create(player1, player2)
+    @game_instance ||= Game.new(player1, player2)
+  end
+
   def attack(player = @this_turn)
     player.receive_damage
     @this_turn == @player1 ? @this_turn = @player2 : @this_turn = @player1
